@@ -16,19 +16,33 @@ class AsrtoidListAdapter: RecyclerView.Adapter<AsrtoidListAdapter.AstroidsViewHo
         this.astrList = astList
     }
 
-    class AstroidsViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class AstroidsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val maintxt = view.maintxt
         val subtxt = view.subtxt
         val statusIMG = view.statusIMG
 
-        fun bind(data: Asteroid){
+        fun bind(data: Asteroid) {
             maintxt.text = data.codename
             subtxt.text = data.closeApproachDate
-            statusIMG.text = data.isPotentiallyHazardous.toString()
+            statusIMG.setImageResource(
+                when (data.isPotentiallyHazardous) {
+                    true -> R.drawable.asteroid_safe
+                    else -> R.drawable.asteroid_hazardous
+                }
+            )
         }
 
-    }
+        companion object {
+            fun from(parent: ViewGroup): AstroidsViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater
+                    .inflate(R.layout.astroid_list_item, parent, false)
 
+                return AstroidsViewHolder(view)
+            }
+
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AstroidsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.astroid_list_item, parent, false)
         return AstroidsViewHolder(view)

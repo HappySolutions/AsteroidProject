@@ -39,7 +39,7 @@
                     android:text="test"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-            <TextView
+            <ImageView
                 android:id="@+id/statusIMG"
                 android:layout_marginEnd="10dp"
                 android:layout_width="50dp"
