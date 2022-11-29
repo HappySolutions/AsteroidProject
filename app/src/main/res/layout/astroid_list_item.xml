@@ -26,20 +26,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
                 <TextView
+                    android:id="@+id/maintxt"
                     style="@style/mainTitletxtStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="test1"/>
                 <TextView
+                    android:id="@+id/subtxt"
                     style="@style/subTitletxtStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="test"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-            <ImageView
-                android:id="@+id/astroidIMG"
-                android:layout_marginRight="10dp"
+            <TextView
+                android:id="@+id/statusIMG"
+                android:layout_marginEnd="10dp"
                 android:layout_width="50dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
