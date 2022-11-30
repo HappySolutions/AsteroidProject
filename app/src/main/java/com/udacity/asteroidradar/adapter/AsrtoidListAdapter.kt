@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.astroid_list_item.view.*
 class AsrtoidListAdapter: RecyclerView.Adapter<AsrtoidListAdapter.AstroidsViewHolder>() {
 
 
-    private var astrList: List<Asteroid>? = null
+    lateinit var astrList: List<Asteroid>
     fun setAstroidList(astList: List<Asteroid>){
-        this.astrList = astList
+        this.astrList = astList.toMutableList()
     }
 
     class AstroidsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,16 +32,16 @@ class AsrtoidListAdapter: RecyclerView.Adapter<AsrtoidListAdapter.AstroidsViewHo
             )
         }
 
-        companion object {
-            fun from(parent: ViewGroup): AstroidsViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater
-                    .inflate(R.layout.astroid_list_item, parent, false)
-
-                return AstroidsViewHolder(view)
-            }
-
-        }
+//        companion object {
+//            fun from(parent: ViewGroup): AstroidsViewHolder {
+//                val layoutInflater = LayoutInflater.from(parent.context)
+//                val view = layoutInflater
+//                    .inflate(R.layout.astroid_list_item, parent, false)
+//
+//                return AstroidsViewHolder(view)
+//            }
+//
+//        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AstroidsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.astroid_list_item, parent, false)

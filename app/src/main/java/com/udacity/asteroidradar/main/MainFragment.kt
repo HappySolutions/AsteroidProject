@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.adapter.AsrtoidListAdapter
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
     lateinit var recyclerAdapter: AsrtoidListAdapter
+    lateinit var binding: FragmentMainBinding
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
@@ -18,10 +20,12 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val binding = FragmentMainBinding.inflate(inflater)
+        binding = FragmentMainBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
+        //viewModel.observeLiveData().observe(viewLifecycleOwner , observe{ it -> recyclerAdapter.setAstroidList(it) } )
 
         setHasOptionsMenu(true)
         initRecyclerView()
@@ -29,9 +33,9 @@ class MainFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        //asteroid_recycler.layoutManager = LinearLayoutManager(this)
+        //asteroid_recycler.layoutManager = LinearLayoutManager(this.context)
         recyclerAdapter = AsrtoidListAdapter()
-        asteroid_recycler.adapter = recyclerAdapter
+        binding.asteroidRecycler.adapter  = recyclerAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
