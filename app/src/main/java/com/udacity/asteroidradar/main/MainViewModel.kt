@@ -26,7 +26,7 @@ class MainViewModel : ViewModel() {
         getPicOfDay()
     }
 
-    fun getPicOfDay(){
+     fun getPicOfDay(){
         nasaImage.add(
             PictureOfDay("","","")
         )
@@ -52,7 +52,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun getAstroidsList(){
+     fun getAstroidsList(){
         astList.add(
             Asteroid(
                 4, "codename1", " closeApproachDate1",
